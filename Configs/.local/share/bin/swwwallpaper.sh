@@ -22,6 +22,13 @@ Wall_Cache()
     ln -fs "${thmbDir}/${wallHash[setIndex]}.blur" "${wallBlr}"
     ln -fs "${thmbDir}/${wallHash[setIndex]}.quad" "${wallQad}"
     ln -fs "${dcolDir}/${wallHash[setIndex]}.dcol" "${wallDcl}"
+
+    if [[ "${wallList[setIndex]}" == *.gif ]]; then
+        echo "GIFs are not supported by hyprlock yet..."
+    else
+        # Convert current wallpaper to PNG and store in .cache/hyde as wall.png
+        magick convert "${wallList[setIndex]}" "${wallPng}"
+    fi
 }
 
 Wall_Change()
@@ -52,7 +59,7 @@ wallTmb="${cacheDir}/wall.thmb"
 wallBlr="${cacheDir}/wall.blur"
 wallQad="${cacheDir}/wall.quad"
 wallDcl="${cacheDir}/wall.dcol"
-
+wallPng="${cacheDir}/wall.png"
 
 #// check wall
 
@@ -98,6 +105,7 @@ done
 swww query &> /dev/null
 if [ $? -ne 0 ] ; then
     swww-daemon --format xrgb &
+    swww query && swww restore
 fi
 
 
@@ -111,5 +119,4 @@ fi
 #// apply wallpaper
 
 echo ":: applying wall :: \"$(readlink -f "${wallSet}")\""
-swww img "$(readlink "${wallSet}")" --transition-bezier .43,1.19,1,.4 --transition-type "${xtrans}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos)" &
-
+swww img "$(readlink "${wallSet}")" --transition-bezier .43,1.19,1,.4 --transition-type "${xtrans}" --transition-duration "${wallTransDuration}" --transition-fps "${wallFramerate}" --invert-y --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")" &
