@@ -32,3 +32,4 @@ Y|Y|${HOME}/.local/share|dolphin|dolphin
 Y|Y|${HOME}/.local/share/kxmlgui5|dolphin|dolphin
 Y|Y|${HOME}/.local/share/kio/servicemenus|hydewallpaper.desktop|dolphin
 N|Y|${HOME}/.config|libinput-gestures.conf|libinput-gestures
+Y|N|${HOME}/.config|Hyprlock-Styles|hyprlock imagemagick chafa

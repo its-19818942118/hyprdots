@@ -78,6 +78,7 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+alias lockstyle='~/.config/Hyprlock-Styles/advanced_installer.sh'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'

@@ -35,6 +35,7 @@ hyprpicker                                             # color picker
 slurp                                                  # region select for screenshot/screenshare
 swappy                                                 # screenshot editor
 cliphist                                               # clipboard manager
+hyprlock                                               # screen locking utility for hyprlands
 
 # --------------------------------------------------- // Dependencies
 polkit-gnome                                           # authentication agent
